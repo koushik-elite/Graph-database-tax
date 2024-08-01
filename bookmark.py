@@ -2,6 +2,7 @@ from unstructured.partition.pdf import partition_pdf
 from PyPDF2 import PdfReader, PdfWriter
 from dicttoxml import dicttoxml
 import pymupdf
+import json
 
 # Read the original PDF
 # input_pdf = PdfReader(f'income-tax-act-1961-amended-by-finance-act-2024.pdf')
@@ -124,9 +125,12 @@ for i in range(0, len(all_bookmark_top)):
 #     print(page.extract_text()) 
 #     print("\n\n")
 
-xml = dicttoxml(all_files)
-xml_decode = xml.decode()
+# xml = dicttoxml(all_files)
+# xml_decode = xml.decode()
  
-xmlfile = open("updated_dict.xml", "w")
-xmlfile.write(xml_decode)
-xmlfile.close()
+# xmlfile = open("updated_dict.xml", "w")
+# xmlfile.write(xml_decode)
+# xmlfile.close()
+
+with open("income-tax-act-1961-amended-by-finance-act-2024.json", "w") as final:
+    json.dump(all_files, final)
